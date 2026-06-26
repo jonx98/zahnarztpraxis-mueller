@@ -634,17 +634,19 @@
     document.getElementById('form-success').style.display = 'block';
   }
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
+   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const id = href.slice(1);
       const el = document.getElementById(id);
       if (el) {
         e.preventDefault();
         el.scrollIntoView({ behavior: 'smooth' });
         document.getElementById('mobile-menu').classList.remove('open');
-      }
-    });
+    }
   });
+});
 </script>
 
 </body>
